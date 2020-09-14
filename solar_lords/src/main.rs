@@ -26,7 +26,10 @@ fn main() -> amethyst::Result<()> {
 
     let app_root = application_root_dir()?;
     let display_config_path = app_root.join("config").join("display.ron");
-    let input_bundle = InputBundle::<StringBindings>::new();
+    let binding_path = app_root.join("config").join("input.ron");
+    let input_bundle = InputBundle::<StringBindings>::new()
+        .with_bindings_from_file(binding_path)?;
+
 
     let game_data = GameDataBuilder::default()
                     .with_bundle(TransformBundle::new())?
@@ -35,7 +38,9 @@ fn main() -> amethyst::Result<()> {
                         InputBundle::<StringBindings>::new().with_bindings_from_file(input_bundle)?,
                     )?*/
                     .with_bundle(input_bundle)?
+                    .with(systems::BackgroundMovementSystem, "background_movement", &["input_system"])
                     .with(systems::ZoomSystem, "camera_zoom_system", &["input_system"])
+                    .with(systems::PlayerControlSystem, "player_control", &["input_system"])
                     .with_bundle(
                         RenderingBundle::<DefaultBackend>::new()
                             // The RenderToWindow plugin provides all the scaffolding for opening a window and drawing on it

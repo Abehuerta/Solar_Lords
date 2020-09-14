@@ -5,9 +5,14 @@
 
 (
     axes: {
-        "mouse_scroll": Emulated(
-            pos: MouseWheel(ScrollDown),
-            neg: MouseWheel(ScrollUp),
+        "mouse_scroll": MouseWheel(horizontal: false),
+        "entity_x": Emulated(
+            pos: Key(D),
+            neg: Key(A),
+        ),
+        "entity_y": Emulated(
+            pos: Key(W),
+            neg: Key(S),
         ),
     },
     actions: {
