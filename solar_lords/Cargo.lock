@@ -3322,7 +3322,7 @@ name = "solar_lords"
 version = "0.1.0"
 dependencies = [
  "amethyst",
- "serde",
+ "rand 0.4.6",
 ]
 
 [[package]]

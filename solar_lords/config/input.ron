@@ -16,6 +16,6 @@
         ),
     },
     actions: {
-
-    },
+        "mine": [ [Mouse(Right)], ], // Multiple bindings for one action
+    }
 )

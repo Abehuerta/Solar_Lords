@@ -41,6 +41,8 @@ fn main() -> amethyst::Result<()> {
                     .with(systems::BackgroundMovementSystem, "background_movement", &["input_system"])
                     .with(systems::ZoomSystem, "camera_zoom_system", &["input_system"])
                     .with(systems::PlayerControlSystem, "player_control", &["input_system"])
+                    .with(systems::MiningSystem, "mining", &["input_system"])
+                    .with(systems::MouseRaycastSystem::default(), "mouse_raycast", &["input_system"])
                     .with_bundle(
                         RenderingBundle::<DefaultBackend>::new()
                             // The RenderToWindow plugin provides all the scaffolding for opening a window and drawing on it
